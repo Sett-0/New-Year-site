@@ -13,4 +13,4 @@ Built as a learning project using **HTML**, **CSS**, and **JavaScript**.
 - No backend required — purely static site
 
 ## Site Demo
-[GitHub Pages](https://sett-0.github.io/New-Year-site/).
+[](https://sett-0.github.io/New-Year-site/)
