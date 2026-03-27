@@ -12,5 +12,5 @@ Built as a learning project using **HTML**, **CSS**, and **JavaScript**.
 - Fully **responsive background** and festive styling
 - No backend required — purely static site
 
-## 🖼 Demo
-[GitHub Pages](https://sett-0.github.io).
+## Site Demo
+![GitHub Pages](https://sett-0.github.io/New-Year-site/).
