@@ -1,0 +1,411 @@
+<!DOCTYPE html>
+<html>
+<style>
+.navbar {
+	position: absolute;
+	top: 0%;
+	left: 5%;
+	width: 80%;
+	height: 50px;
+	background: rgba(0, 0, 0, 0.0);
+	z-index: 15;
+}
+
+
+.navbar a {
+	float: left;
+	display: block;
+	color: #f2f2f2;
+	text-align: center;
+	padding: 14px 16px;
+	text-decoration: none;
+	font-size: 27px;
+}
+
+.navbar a:hover {
+	background: #ddd;
+	color: black;
+}
+
+
+body {
+	background: url("images/main.jpg") no-repeat center fixed;
+	background-size: cover;
+}
+
+
+.snowflake {
+	color: #fff;
+	font-size: 1em;
+	font-family: 'Molle', cursive;
+	text-shadow: 0 0 1px #000;
+}
+
+
+@-webkit-keyframes snowflakes-fall { 0%{top:-10%} 100%{top:100%} }
+
+@-webkit-keyframes snowflakes-shake {
+	0%   { -webkit-transform:translateX(0px);  transform: translateX(0px) }
+	50%  { -webkit-transform:translateX(80px); transform: translateX(80px) }
+	100% { -webkit-transform:translateX(0px);  transform: translateX(0px) }
+}
+
+@keyframes snowflakes-fall { 0%{top:-10%} 100%{top:100%}}
+
+@keyframes snowflakes-shake {
+	0%   { transform: translateX(0px) }
+	50%  { transform: translateX(80px) }
+	100% { transform: translateX(0px) }
+}
+
+.snowflake {
+	position: fixed; top: -10%; z-index: 9999;
+
+	-webkit-user-select: none;
+	-moz-user-select: none;
+	-ms-user-select: none;
+	user-select: none;
+	cursor: default;
+
+	-webkit-animation-name: snowflakes-fall, snowflakes-shake;
+	-webkit-animation-duration: 10s, 3s;
+	-webkit-animation-timing-function: linear, ease-in-out;
+	-webkit-animation-iteration-count: infinite, infinite;
+	-webkit-animation-play-state: running, running;
+
+	animation-name: snowflakes-fall, snowflakes-shake;
+	animation-duration: 10s, 3s;
+	animation-timing-function: linear, ease-in-out;
+	animation-iteration-count: infinite, infinite;
+	animation-play-state: running, running
+}
+
+.snowflake:nth-of-type(0) {
+	left: 1%;
+	-webkit-animation-delay: 0s, 0s;
+	animation-delay: 0s, 0s
+}
+
+.snowflake:nth-of-type(1) {
+	left: 10%;
+	-webkit-animation-delay: 1s, 1s;
+	animation-delay: 1s, 1s
+}
+
+.snowflake:nth-of-type(2) {
+	left: 20%;
+	-webkit-animation-delay: 6s, .5s;
+	animation-delay: 6s, .5s
+}
+
+.snowflake:nth-of-type(3) {
+	left: 30%;
+	-webkit-animation-delay: 4s, 2s;
+	animation-delay: 4s, 2s
+}
+
+.snowflake:nth-of-type(4) {
+	left: 40%;
+	-webkit-animation-delay: 2s, 2s;
+	animation-delay: 2s, 2s
+}
+
+.snowflake:nth-of-type(5) {
+	left: 50%;
+	-webkit-animation-delay: 8s, 3s;
+	animation-delay: 8s, 3s
+}
+
+.snowflake:nth-of-type(6) {
+	left: 60%;
+	-webkit-animation-delay: 6s, 2s;
+	animation-delay: 6s, 2s
+}
+
+.snowflake:nth-of-type(7) {
+	left: 70%;
+	-webkit-animation-delay: 2.5s, 1s;
+	animation-delay: 2.5s, 1s
+}
+
+.snowflake:nth-of-type(8) {
+	left: 80%;
+	-webkit-animation-delay: 1s, 0s;
+	animation-delay: 1s, 0s
+}
+
+.snowflake:nth-of-type(9) {
+	left: 90%;
+	-webkit-animation-delay: 3s, 1.5s;
+	animation-delay: 3s, 1.5s
+}
+
+
+.ComingSoon {
+	position: absolute;
+	top: 20%;
+	left: 20%;
+	text-align: center;
+	color: white;
+	font-family: "Courier New", Courier, moonspace;
+	font-size: 25px;
+}
+
+
+form {
+	display: none;
+	position: relative;
+	top: 10%;
+	left: 30%;
+	width: 40%;
+	height: 130%;
+	color: white;
+	font-family: 'Monotype Corsiva', cursive;
+	font-size: 20px;
+	background-color: rgba(210, 0, 0, 1.0);
+	z-index: 7;
+}
+
+
+.container {
+	padding-left: 10px;
+	padding-right: 10px;
+}
+
+
+.row:after {
+	content: "";
+	display: table;
+	clear: both;
+}
+
+
+.column-text {
+	float: left;
+	width: 78%;
+	height: 7%;
+	padding: 10px;
+}
+
+
+.column-image {
+	float: left;
+	width: 12%;
+	height: 7%;
+	padding: 10px;
+}
+
+
+.input-border {
+	margin-left: 10px;
+	border-width: 7px;
+	-webkit-border-image: repeating-linear-gradient(-45deg, Khaki, Khaki 10px,
+											darkred 10px, red 15px,
+											darkred 20px) 7.5;
+											
+	-moz-border-image: repeating-linear-gradient(-45deg, Khaki, Khaki 10px,
+											darkred 10px, red 15px,
+											darkred 20px) 7.5;
+											
+	-o-border-image: repeating-linear-gradient(-45deg, Khaki, Khaki 10px,
+											darkred 10px, red 15px,
+											darkred 20px) 7.5;
+											
+	border-image: repeating-linear-gradient(-45deg, Khaki, Khaki 10px,
+											darkred 10px, red 15px,
+											darkred 20px) 7.5;
+}
+
+
+.button-style {
+	font-family: 'Monotype Corsiva', cursive;
+	font-size: 20px;
+	color: #FA8072;
+	border-width: 7px;
+	-webkit-border-image: repeating-linear-gradient(-45deg, Khaki, Khaki 10px,
+											darkred 10px, red 15px,
+											darkred 20px) 7.5;
+											
+	-moz-border-image: repeating-linear-gradient(-45deg, Khaki, Khaki 10px,
+											darkred 10px, red 15px,
+											darkred 20px) 7.5;
+											
+	-o-border-image: repeating-linear-gradient(-45deg, Khaki, Khaki 10px,
+											darkred 10px, red 15px,
+											darkred 20px) 7.5;
+											
+	border-image: repeating-linear-gradient(-45deg, Khaki, Khaki 10px,
+											darkred 10px, red 15px,
+											darkred 20px) 7.5;
+}
+
+
+</style>
+
+
+<script>
+
+// Устанавливаем дату
+var nextYear = new Date().getFullYear() + 1;
+var countDownDate = new Date(`Jan 1, ${nextYear} 00:00:00`).getTime();
+
+// Меняем дату каждую секунду
+var x = setInterval(function() {
+
+	// Сегодняшняя дата
+	var now = new Date().getTime();
+
+	// Следующий год
+	var nextYear = new Date().getFullYear() + 1;
+	document.querySelector("h1").innerText = "NEW YEAR " + nextYear;
+
+	// Вычисляем разницу между датами
+	var distance = countDownDate - now;
+	
+	// Если таймер вышел
+	if (distance < 0) {
+		countDownDate = new Date(`Jan 1, ${nextYear} 00:00:00`).getTime();
+		return;
+	}
+
+	// Вычисляем дни, часы, минуты и секунды
+	var days = Math.floor(distance / (1000 * 60 * 60 * 24));
+	var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+	var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+	var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+	
+	// Отображаем результат в элементе id="demo"
+	document.getElementById("demo").innerHTML = days + "d " + hours + "h " + minutes + "m " + seconds + "s";
+}, 1000);
+
+
+function formVisible() {
+	var contact = document.forms['contact'];
+	if (contact.style.display === 'block') {
+		contact.style.display = 'none';
+	} else {
+		contact.style.display = 'block';
+		window.scrollTo(0, 0);
+	}
+}
+
+</script>
+
+
+<body>
+
+<div class="snowflakes" aria-hidden="true">
+	<div class="snowflake">
+	*
+	</div>
+	<div class="snowflake">
+	*
+	</div>
+	<div class="snowflake">
+	*
+	</div>
+	<div class="snowflake">
+	*
+	</div>
+	<div class="snowflake">
+	*
+	</div>
+	<div class="snowflake">
+	*
+	</div>
+	<div class="snowflake">
+	*
+	</div>
+	<div class="snowflake">
+	*
+	</div>
+	<div class="snowflake">
+	*
+	</div>
+	<div class="snowflake">
+	*
+	</div>
+</div>
+
+
+<div class="navbar">
+	<a href="index.html"> Home </a>
+	<a href="santa.html"> History </a>
+	<a href="santa_friends.html"> Friends </a>
+	<a href="snowman.html"> Snowman </a>
+	<a href="#contact" onclick="formVisible()"> Contact </a>
+</div>
+
+
+<div class="ComingSoon">
+	<h1> NEW YEAR </h1>
+	<hr>
+	<p id="demo" style="font-size:30px"></p>
+	<hr>
+</div>
+
+
+<form name='contact' action="https://formspree.io/f/xvzvgjkq" method="POST">
+	<div class='container'>
+		<div class='row'>
+			<div class='column-image'>
+				<img src='images/sman2.png' width=100% height=100% />
+			</div>
+			
+			<div class='column-text'>
+				<p style='font-size:12px; font-family:cursive; font-weight:bold'>
+					Fill in all the fields, send your letter to Santa,
+					and he will answer right away!
+				</p>
+			</div>
+		</div>
+		
+		<hr color='red'>
+
+		<p> Dear Santa, </p>
+		<p style='text-align:center;'>
+			My name is: <input class='input-border' type='text' name='Name'>
+		</p>
+		<p style='text-align:center;'>
+			I am a: <input type='radio' name='sex' style='margin-left:10px;' value='Boy'>
+			<span style='color:Khaki;'> BOY </span>
+			<input type='radio' name='sex' style='margin-left:20px;' value='Girl'>
+			<span style='color:Khaki;'> GIRL </span>
+		</p>
+		
+		<p style='text-align:left; margin-left:35%; color:Khaki;'>
+				<input type='radio' name='behavior' value='good'> GOOD <br/>
+				<span style='position:absolute; margin-left:-30%; color:#fff;'> This year I have been: </span>
+				<input type='radio' name='behavior' value='very good'> VERY, VERY GOOD <br/>
+				<input type='radio' name='behavior' value='not so good'> A TEENY TINY BIT NOT SO GOOD
+		</p>
+
+		<p> This year for Christmas i'd like to get: </p>
+		<p style='text-align:right; margin-right:30%;'>
+			a <input class='input-border' type='text' name='Present1'><br/><br/>
+			a <input class='input-border' type='text' name='Present2'><br/><br/>
+			and also some <input class='input-border' type='text' name='Present3'>
+		</p>
+		
+		<br/>
+		<p style='text-align:center;'> and Santa, I also want to tell you: <br/><br/>
+			<textarea class='input-border' name='Letter' style='width:50%; height:10%;'></textarea>
+		</p>
+
+		<p style='text-align:center;'>
+			<input class='button-style' type='submit' value='Send it!'>
+		</p>
+		
+		<br/>
+		<br/>
+	</div>
+</form>
+
+
+</body>
+
+</html>
+
+
+
+

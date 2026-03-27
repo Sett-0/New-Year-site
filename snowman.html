@@ -1,0 +1,416 @@
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial scale=1">
+<script src='images/snowman_slider.js'></script>
+<link rel='stylesheet' href='images/snowman_style_slider.css'>
+
+
+<style>
+
+body {
+	margin: 0;
+	background: linear-gradient(90deg, MidNightBlue 0%, LightSkyBlue 25%, white 50%, 
+									   LightSkyBlue 75%, MidNightBlue 100%);
+}
+
+
+.navbar {
+	position: fixed;
+	top: 0;
+	width: 100%;
+	height: 50px;
+	background: rgba(0, 0, 0, 0.0);	/* Black bg with 1.0 opacity */
+	z-index: 9;
+}
+
+.navbar a {
+	float: left;
+	display: block;
+	color: #f2f2f2;
+	text-align: center;
+	padding: 14px 16px;
+	text-decoration: none;
+	font-size: 27px;
+}
+
+.navbar a:hover {
+	background: #ddd;
+	color: black;
+}
+
+
+.main {
+	padding: 15px;
+	margin-left: 15%;
+	margin-top: 25%;
+}
+
+
+article, aside {
+	display: inline-block;
+	vertical-align:top;
+	text-align: justify;
+}
+
+article {
+	background-color: rgba(255, 255, 255, 0.7);
+	box-shadow: 0, 0, 10px rgba(25, 25, 112, 0.5); /* Shadow parameters */
+	padding: 10px;
+	border-radius: 5px;
+	width: 80%;
+	margin-right: 5%;
+	z-index: -2;
+}
+
+aside {
+	position: relative;
+	padding-left: 1.5rem;
+	margin-left: 1.5rem;
+	padding-right: 1.5rem;
+	margin-right: 1.5rem;
+	margin-top: 1.5rem;
+	float: right;
+	font-style: Italic;
+	color: #29627e;
+	width: 25%;
+
+	background-color: #87CEEB;
+	
+	box-shadow: 0px 2px 5px #1c1a19;
+	border-radius: 5px;
+	
+	color: white;
+	font-size: 0.9em;
+	z-index: 1;
+}
+
+aside > p {
+	margin: 1.5rem;
+}
+
+
+.main-text {
+	font-family: 'Fira Sans', sans-serif;
+	text-align: justify;
+	line-height: 1.9em;
+	color: MidNightBlue;
+	margin-right: 5%;
+	margin-left: 5%
+}
+
+
+#santa_picture {
+	text-align: center;
+}
+
+
+.footer {
+	position: absolute;
+	right: 0;
+	bottom: 0;
+	left: 0;
+	padding: 1rem;
+	background-color: #efefef;
+	text-align: center;
+	width: 100%;
+}
+
+
+.imgW {
+	width: 100%;
+	height: 250px;
+	position: absolute;
+	top: 0;
+	position: fixed;
+	z-index: 5;
+}
+
+
+.imgW > img {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+}
+
+
+aside img {
+	margin: 15px 15px;
+}
+
+
+form {
+	display: none;
+	position: absolute;
+	top: 50%;
+	left: 30%;
+	width: 40%;
+	height: 130%;
+	color: white;
+	font-family: 'Monotype Corsiva', cursive;
+	font-size: 20px;
+	background-color: rgba(210, 0, 0, 1.0);
+	z-index: 4;
+}
+
+
+.container {
+	padding-left: 10px;
+	padding-right: 10px;
+}
+
+
+.row:after {
+	content: "";
+	display: table;
+	clear: both;
+}
+
+
+.column-text {
+	float: left;
+	width: 78%;
+	height: 7%;
+	padding: 10px;
+}
+
+
+.column-image {
+	float: left;
+	width: 12%;
+	height: 7%;
+	padding: 10px;
+}
+
+
+.input-border {
+	margin-left: 10px;
+	border-width: 7px;
+	-webkit-border-image: repeating-linear-gradient(-45deg, Khaki, Khaki 10px,
+											darkred 10px, red 15px,
+											darkred 20px) 7.5;
+											
+	-moz-border-image: repeating-linear-gradient(-45deg, Khaki, Khaki 10px,
+											darkred 10px, red 15px,
+											darkred 20px) 7.5;
+											
+	-o-border-image: repeating-linear-gradient(-45deg, Khaki, Khaki 10px,
+											darkred 10px, red 15px,
+											darkred 20px) 7.5;
+											
+	border-image: repeating-linear-gradient(-45deg, Khaki, Khaki 10px,
+											darkred 10px, red 15px,
+											darkred 20px) 7.5;
+}
+
+
+.button-style {
+	font-family: 'Monotype Corsiva', cursive;
+	font-size: 20px;
+	color: #FA8072;
+	border-width: 7px;
+	-webkit-border-image: repeating-linear-gradient(-45deg, Khaki, Khaki 10px,
+											darkred 10px, red 15px,
+											darkred 20px) 7.5;
+											
+	-moz-border-image: repeating-linear-gradient(-45deg, Khaki, Khaki 10px,
+											darkred 10px, red 15px,
+											darkred 20px) 7.5;
+											
+	-o-border-image: repeating-linear-gradient(-45deg, Khaki, Khaki 10px,
+											darkred 10px, red 15px,
+											darkred 20px) 7.5;
+											
+	border-image: repeating-linear-gradient(-45deg, Khaki, Khaki 10px,
+											darkred 10px, red 15px,
+											darkred 20px) 7.5;
+}
+
+
+</style>
+
+<script>
+
+function formVisible() {
+	if (contact.style.display === 'block') {
+		contact.style.display = 'none';
+	} else {
+		contact.style.display = 'block';
+		window.scrollTo(0, 0);
+	}
+}
+
+</script>
+
+</head>
+<body>
+
+<header>
+	<div class="navbar">
+	<a href="main.html"> Home </a>
+	<a href="santa.html"> History </a>
+	<a href="santa_friends.html"> Friends </a>
+	<a href="snowman.html"> Snowman </a>
+	<a href="#contact" onclick="formVisible()"> Contact </a>
+</div>
+
+<div class="imgW">
+	<img src="images/banner.png" />
+</div>
+
+
+<ul id='slides'>
+	<li class='slide showing'></li>
+	<li class='slide'></li>
+	<li class='slide'></li>
+	<li class='slide'></li>
+	<li class='slide'></li>
+	<li class='slide'></li>
+</ul>
+
+
+</header>
+
+
+<div class="main">
+	<section>
+		<article>
+			<aside>
+				<h1 style="text-align: center"> About Frosty the Snowman </h1>
+				<img src="images/Frosty.gif" alt="FrostyPicture" width=80% height=auto />
+				<p class='main-text'> I am Frosty the Snowman! </p>
+			</aside>
+		
+			<p class='main-text'>
+				Снеговик — это снежная скульптура, создаваемая детьми и взрослыми зимой во дворе. Простейший
+				снеговик состоит из трёх снежных шаров (комов), получаемых путём лепки снежков и  накатывания
+				на них лежащего снега. Самый большой ком становится брюшком снеговика, поменьше — грудью,
+				а самый маленький — головой. Реализации остальных частей тела может варьироваться.
+				<br><br>
+				Руки снеговика могут быть представлены двумя ветками, но иногда делаются символические руки
+				из двух небольших комков снега. В «руки» снеговику часто даётся лопата или метла, которую
+				втыкают в снег рядом с фигурой. Иногда снеговик снабжается двумя ступнями из снежных комков,
+				как бы выглядывающими из-под полы его шубы.
+				<br><br>
+				Канон требует, чтобы нос снеговика был сделан из моркови (морковь хорошо сохранялась до зимы
+				в крестьянских хозяйствах), но в современных условиях нос-морковку могут заменить сосулька,
+				банан и даже длинные угольки или палочки. Другие черты лица обозначаются камушками или
+				угольками, а иногда и акварельными красками.
+				<br><br>
+				Классический головной убор снеговика - прохудившееся ведро. Иногда снеговику укутывают шею шарфом,
+				и на «костюме» по вертикали располагают «пуговицы» из угольков-камушков.
+				<br><br>
+				Лепка снеговиков изначально являлась мистическим ритуалом. Согласно старинной легенде, снеговиков
+				в обиход ввел католический святой, учредитель названного его именем нищенствующего ордена – 
+				Франциск Ассизский (Franciscus Assisiensis, итал. Francesco d'Assisi), мирское имя которого – 
+				Джованни ди Пьетро Бернардоне (Giovanni di Pietro Bernardone, 5 июля 1182 — 3 октября 1226), 
+				который считал создание снеговиков своеобразным методом борьбы с бесами. В лепке снеговика 
+				угадывается прообраз сотворения человека, только теперь акт творения принадлежит самому человеку. 
+				Снеговики с метлами-оружием являлись стражниками жилища, не пуская туда злых духов.
+				<br><br>
+				Снеговиков всегда лепили рядом с домами, щедро украшали гирляндами, овощами или уже ненужной 
+				домашней утварью. Например, нос в виде морковки крепили, чтобы умилостивить духов, посылающих 
+				урожай и плодородие. Перевернутое ведро на голове символизировало достаток в доме. 
+				В Румынии есть обычай украшать снеговика «бусами» из головок чеснока, поскольку это способствует
+				здоровью домочадцев и оберегает их от вампиров, вурдалаков, оборотней.
+				<br><br>
+				Впрочем, есть легенды, что первые снеговики изображались недобрыми свирепыми снежными монстрами, 
+				которые возникли в те давние времена, когда в Европе были безжалостные зимы с лютыми морозами и 
+				вьюгами, которые приносили немало хлопот, в основном, сельским жителям.
+				<br><br>
+				Тогда и появились поверья, что сделанные из снега «человечки» могут представлять реальную угрозу
+				для людей. По этим поверьям, нельзя было лепить снеговиков в день полнолуния, нельзя было вручать
+				им метлу. А если, все-таки, это происходило, то нужно было разрушить снеговика до наступления ночи,
+				иначе это может обернуться навязчивыми кошмарными снами, ночными страхами, упадком сил и головной
+				болью. В Норвегии, например, где снеговиков называли «белыми троллями», существовало предание
+				о том, что на них нельзя смотреть поздним вечером из-за занавески в окне. К тому же, дурным знаком
+				считалось встретить снежную фигуру ночью: её нужно было обойти стороной.
+				<br><br>
+				Но по еще одной, раннехристианской легенде снеговиков считали ангелами, ведь снег падает с неба,
+				значит, это дар божий, поэтому снеговик, как ангел, мог передавать Богу людские просьбы и мольбы. 
+				Поэтому считалось, что если из свежевыпавшего снега слепить фигурку снеговика и шепнуть ему желание, 
+				то, когда снежная фигурка растает, желание будет исполнено.
+				<br><br>
+				Только в XIX веке снежные создания «подобрели» и стали незаменимым атрибутом Рождества и Нового года, 
+				своеобразным символом зимних праздников. Лепка снеговиков стала популярной детской зимней забавой.
+				<br><br>
+				Среди популярных рождественских персонажей есть снеговик по имени Фрости. Этот герой у многих
+				поколений американских детей неразрывно связан с Санта-Клаусом и компанией. Волшебный снеговик
+				стал популярен после выхода мультфильма "Снеговик Фрости" (англ. Frosty the Snowman) в 1969 году. 
+				В нём рассказывается об ожившем благодаря шляпе фокусника снеговике. Фрости быстро нашёл общий 
+				язык с местной детворой и замечательно провёл с ними рождественские каникулы, но погода начала 
+				неумолимо теплеть – какой снеговик это выдержит? Было принято соломоново решение отправить Фрости 
+				на Северный полюс. Разумеется, нашлись злодеи, воспрепятствовавшие этому, и неизвестно, чем бы всё
+				закончилось, если бы не вмешательство Санты. В конце снеговик Фрости улетает в холодные края на 
+				волшебной упряжке, пообещав вернуться на следующее Рождество.
+			</p>
+		</article>
+	</section>
+</div>
+
+
+<form name='contact' action="mailto:ampilov2000@mail.ru" method="post" enctype="text/plain">
+	<div class='container'>
+		<div class='row'>
+			<div class='column-image'>
+				<img src='images/sman2.png' width=100% height=100% />
+			</div>
+			
+			<div class='column-text'>
+				<p style='font-size:12px; font-family:cursive; font-weight:bold'>
+					Fill in all the fields, send your letter to Santa,
+					and he will answer right away!
+				</p>
+			</div>
+		</div>
+		
+		<hr color='red'>
+
+		<p> Dear Santa, </p>
+		<p style='text-align:center;'>
+			My name is: <input class='input-border' type='text' name='Name'>
+		</p>
+		<p style='text-align:center;'>
+			I am a: <input type='radio' name='sex' style='margin-left:10px;' value='Boy'>
+			<span style='color:Khaki;'> BOY </span>
+			<input type='radio' name='sex' style='margin-left:20px;' value='Girl'>
+			<span style='color:Khaki;'> GIRL </span>
+		</p>
+		
+		<p style='text-align:left; margin-left:35%; color:Khaki;'>
+				<input type='radio' name='behavior' value='good'> GOOD <br/>
+				<span style='position:absolute; margin-left:-30%; color:#fff;'> This year I have been: </span>
+				<input type='radio' name='behavior' value='very good'> VERY, VERY GOOD <br/>
+				<input type='radio' name='behavior' value='not so good'> A TEENY TINY BIT NOT SO GOOD
+		</p>
+
+		<p> This year for Christmas i'd like to get: </p>
+		<p style='text-align:right; margin-right:30%;'>
+			a <input class='input-border' type='text' name='Present1'><br/><br/>
+			a <input class='input-border' type='text' name='Present2'><br/><br/>
+			and also some <input class='input-border' type='text' name='Present3'>
+		</p>
+		
+		<br/>
+		<p style='text-align:center;'> and Santa, I also want to tell you: <br/><br/>
+			<textarea class='input-border' name='Letter' style='width:50%; height:10%;'></textarea>
+		</p>
+		
+		<p style='text-align:center;'>
+			<input class='button-style' type='submit' value='Send it!'>
+		</p>
+		
+		<br/>
+		<br/>
+	</div>
+</form>
+
+
+<footer>
+	<img src="images/footer2.png" alt="" width=100%/>
+</footer>
+
+
+</body>
+</html>

@@ -1,0 +1,540 @@
+<html>
+<head>
+<meta name='viewport' content='width=device-width, initial scale=1'>
+
+<script src='images/slider.js'></script>
+<link rel='stylesheet' href='images/style_slider.css'>
+
+<style>
+
+* {
+	box-sizing: border-box;
+}
+
+.navbar {
+	position: fixed;
+	top: 0;
+	width: 100%;
+	background: rgba(0, 0, 128, 0.8);
+	z-index: 15;
+	text-shadow: 10px 10px 20px black, 0 0 25px blue, 0 0 5px darkblue;
+}
+
+.navbar a {
+	float: left;
+	display: block;
+	color: #f2f2f2;
+	text-align: center;
+	padding: 14px 20px;
+	text-decoration: none;
+	font-size: 27px;
+}
+
+.navbar a:hover {
+	background: #ddd;
+	color: black;
+}
+
+
+body {
+	margin: 0;
+	font-family: Arial, Helvetica, sans-serif;
+}
+
+
+.container {
+	padding: 64px;
+}
+
+
+.row:after {
+	content: "";
+	display: table;
+	clear: both;
+}
+
+
+.column-text {
+	float: left;
+	width: 66.6666%;
+	padding: 20px;
+}
+
+
+.column-image {
+	float: left;
+	width: 33.3333%;
+	padding: 20px;
+}
+
+
+.large-font {
+	font-size: 48px;
+}
+
+
+.button {
+	margin: 0px 100px;
+	border: none;
+	color: white;
+	padding: 14px 28px;
+	font-size: 16px;
+	cursor: pointer;
+	background-color: #4CAF50;
+}
+
+
+img {
+	display: block;
+	height: auto;
+	max-width: 100%;
+}
+
+
+@media screen and (max-width: 1000px) {
+	.column-text, .column-image {
+		width: 100%;
+		text-align: center;
+	}
+	
+	img {
+		margin: auto;
+	}
+}
+
+
+.main-text {
+	text-align: justify;
+	font-size: 1em;
+	line-height: 1.5em;
+	margin-right: 5%;
+	margin-left: 5%;
+}
+
+
+h1 {
+	text-align: center;
+	font-size: 1.5em;
+	color: blue;
+}
+
+
+img {
+	-webkit-filter: drop-shadow(5px 5px 5px #4682B4);
+	filter: drop-shadow(5px 5px 5px #4682B4);
+}
+
+
+#more1 { display: none; }
+#more2 { display: none; }
+#more3 { display: none; }
+
+
+.active {
+	background-color: #E68352 !important;
+}
+
+
+.button {
+	background-color: green;
+}
+
+
+footer {
+	height: 100px;
+	bottom: 0;
+	width: 100%;
+	background: url('images/santa_grid.png') repeat-x;
+}
+
+
+form {
+	display: none;
+	position: absolute;
+	top: 30%;
+	left: 30%;
+	width: 40%;
+	height: 130%;
+	color: white;
+	font-family: 'Monotype Corsiva', cursive;
+	font-size: 20px;
+	background-color: rgba(210, 0, 0, 1.0);
+	z-index: 7;
+}
+
+
+.form-container {
+	padding-left: 10px;
+	padding-right: 10px;
+}
+
+
+.form-row:after {
+	content: "";
+	display: table;
+	clear: both;
+}
+
+
+.form-column-text {
+	float: left;
+	width: 78%;
+	height: 7%;
+	padding: 10px;
+}
+
+
+.form-column-image {
+	float: left;
+	width: 12%;
+	height: 7%;
+	padding: 10px;
+}
+
+
+.input-border {
+	margin-left: 10px;
+	border-width: 7px;
+	-webkit-border-image: repeating-linear-gradient(-45deg, Khaki, Khaki 10px,
+											darkred 10px, red 15px,
+											darkred 20px) 7.5;
+											
+	-moz-border-image: repeating-linear-gradient(-45deg, Khaki, Khaki 10px,
+											darkred 10px, red 15px,
+											darkred 20px) 7.5;
+											
+	-o-border-image: repeating-linear-gradient(-45deg, Khaki, Khaki 10px,
+											darkred 10px, red 15px,
+											darkred 20px) 7.5;
+											
+	border-image: repeating-linear-gradient(-45deg, Khaki, Khaki 10px,
+											darkred 10px, red 15px,
+											darkred 20px) 7.5;
+}
+
+
+.button-style {
+	font-family: 'Monotype Corsiva', cursive;
+	font-size: 20px;
+	color: #FA8072;
+	border-width: 7px;
+	-webkit-border-image: repeating-linear-gradient(-45deg, Khaki, Khaki 10px,
+											darkred 10px, red 15px,
+											darkred 20px) 7.5;
+											
+	-moz-border-image: repeating-linear-gradient(-45deg, Khaki, Khaki 10px,
+											darkred 10px, red 15px,
+											darkred 20px) 7.5;
+											
+	-o-border-image: repeating-linear-gradient(-45deg, Khaki, Khaki 10px,
+											darkred 10px, red 15px,
+											darkred 20px) 7.5;
+											
+	border-image: repeating-linear-gradient(-45deg, Khaki, Khaki 10px,
+											darkred 10px, red 15px,
+											darkred 20px) 7.5;
+}
+
+
+</style>
+
+<script>
+
+function myFunction(k) {
+
+	var btn1Text = document.getElementById('button1');
+	var btn2Text = document.getElementById('button2');
+	var btn3Text = document.getElementById('button3');
+	
+	var dots1 = document.getElementById('dots1');
+	var dots2 = document.getElementById('dots2');
+	var dots3 = document.getElementById('dots3');
+	
+	var more1 = document.getElementById('more1');
+	var more2 = document.getElementById('more2');
+	var more3 = document.getElementById('more3');
+	
+	var buttons = [btn1Text, btn2Text, btn3Text];
+	var dots = [dots1, dots2, dots3];
+	var moreText = [more1, more2, more3];
+	
+	if (dots[k].style.display === 'none') {
+		dots[k].style.display = 'inline';
+		moreText[k].style.display = 'none';
+		buttons[k].innerHTML = 'Read more';
+	} else {
+		dots[k].style.display = 'none';
+		moreText[k].style.display = 'inline';
+		buttons[k].innerHTML = 'Read less';
+	}
+}
+
+
+function formVisible() {
+	if (contact.style.display === 'block') {
+		contact.style.display = 'none';
+	} else {
+		contact.style.display = 'block';
+		window.scrollTo(0, 0);
+	}
+}
+
+</script>
+
+</head>
+
+
+<body>
+
+<header>
+
+
+<div class='navbar'>
+
+	<a href="main.html"> Home </a>
+	<a href="santa.html"> History </a>
+	<a href="santa_friends.html"> Friends </a>
+	<a href="snowman.html"> Snowman </a>
+	<a href="#contact" onclick="formVisible()"> Contact </a>
+	
+</div>
+
+
+<ul id='slides'>
+
+	<li class='slide showing'></li>
+	<li class='slide'></li>
+	<li class='slide'></li>
+	<li class='slide'></li>
+	<li class='slide'></li>
+
+</ul>
+	
+</header>
+
+
+<!-- Rudolph Section -->
+<div class='container'>
+
+	<div class='row'>
+	
+		<div class='column-text'>
+		
+			<h1 class='large-font' style='color:red;'><b> Rudolph the Red-Nosed Reindeer </b></h1>
+			
+			<p class='main-text'>
+				В соответствие со сказкой известного писателя Роберта Мэя, красноносый олень
+				Рудольф является вожаком в упряжке саней Санта-Клауса, которую несут по ночному 
+				небу в рождественскую ночь девять северных оленей. <br/>
+				Нос Рудольфа, который сначала служил предметом насмешек со стороны других оленей, 
+				помогает ему, согласно сказке, освещать путь Санта-Клаусу. Натаниель Домини 
+				(Nathaniel Dominy) из Дартмутского колледжа в Ганновере (США) нашел способ 
+				описать предназначение этого необычно красного и яркого носа с научной точки 
+				зрения, изучив те особенности в анатомии и жизни северных оленей, которые 
+				стали известны ученым совсем недавно.
+				<span id='dots1'> ... </span><span id='more1'>
+				К примеру, в октябре 2013 года ученые выяснили, что цвет глаз северных оленей 
+				меняется вместе с сезонами года, становясь желтыми во время лета, и синими во 
+				время зимы. Благодаря такой смене окраски, которая происходит из-за 
+				"растягивания" подложки сетчатки, так называемого тапетума, олень приобретает 
+				зимой возможность видеть ультрафиолет, а чувствительность его глаз к синему 
+				свету заметно вырастает за счет снижения в четкости зрения. Как считает 
+				Домини, нет причин полагать, что Рудольф и его собратья по упряжке не 
+				обладают таким качеством, которое должно помогать им ориентироваться в темную 
+				рождественскую ночь во время кругосветного полета Санта-Клауса.
+				</span>
+			</p>
+			
+			<button class='button' style='background-color:red' onclick='myFunction(0)' id='button1' >
+				Read more
+			</button>
+				
+		</div>
+		
+		
+		<div class='column-image'>
+		
+			<img src='images/santa_rudolph.png' width=100% height=auto />
+			
+		</div>
+	
+	</div>
+
+</div>
+
+
+<!-- Snowman Section -->
+<div class='container'>
+
+	<div class='row'>
+	
+		<div class='column-image'>
+		
+			<img src='images/ded4.png' alt='App' width=100% height=auto />
+			
+		</div>
+	
+	
+		<div class='column-text'>
+		
+			<h1 class='large-font' style='color:MediumSeaGreen;'><b> Snowman </b></h1>
+			
+			<p class='main-text'>
+				18 января отмечают День снеговика. Предположительно в конце 
+				XV века, где-то в 1493 году, итальянский скульптор и архитектор, 
+				а ещё поэт по имени Микеланджело Буонарроти, впервые в мире слепил 
+				снежную фигуру. <br/>
+				В то же время некоторые источники утверждают, что снеговик был 
+				придуман святым Франциском Ассзиским. Хотя слово «schneemann», 
+				что означает снежный человек, немецкого происхождения, 
+				а «snowman» - английского. В Европе снеговик всегда стоял возле 
+				дома, его щедро украшали гирляндами, домашней утварью и укутывали 
+				в шарф, в руки вручали ветвистую метлу. Все детали одеяния снеговика 
+				имеют мистический характер.
+				<span id='dots2'> ... </span><span id='more2'>
+				Так, нос в виде морковки прикреплялся снеговику, чтобы умилостивить 
+				духов, которые посылают урожай и плодородие. Перевернутое ведро, 
+				расположенное на голове символизировало достаток. В Румынии снеговиков 
+				украшают бусами из чеснока, что способствовало здоровью всех членов 
+				семьи и оберегало их от проказ нечистой силы.
+				</span>
+			</p>
+			
+			<button class='button' onclick='myFunction(1)' id='button2'>
+				Read more
+			</button>
+				
+		</div>
+		
+	</div>
+
+</div>
+
+
+<!-- Elf Section -->
+<div class='container'>
+
+	<div class='row'>
+	
+		<div class='column-text'>
+		
+			<h1 class='large-font' style='color:red;'><b> The Elf on the Slelf </b></h1>
+			
+			<p class='main-text'>
+				В Соединенных Штатах, Канаде, Великобритании и Ирландии современная 
+				легенда о Санта-Клаусе обычно включает миниатюрных эльфов на Рождество. 
+				Одетые в зеленое эльфы с острыми ушами и остроконечными шляпами в 
+				качестве помощников Санты. Они делают игрушки в мастерской Санты, 
+				расположенной на Северном полюсе. <br/>
+				Для того, чтобы подарить детям подарки, Санта Клаус должен быть уверен 
+				в том, что малыш вел себя хорошо. А как об этом узнать? Остается один 
+				единственный способ – дать секретное задание одному из своих 
+				помощников-эльфов (scout elves) проследить за ситуацией в доме.
+				<span id='dots3'> ... </span><span id='more3'>
+				Американским мамам и папам эта идея приглянулась и превратилась в настоящую 
+				традицию «the elf on the shelf». <br/>
+				Идея «the elf on the shelf» проста. Эльф обычно появляется в доме в течение 
+				Scout Elf Return Week (примерно в промежутке между 24 ноября и 1 декабря).
+				Каждую ночь мама или папа прячут эльфа на новом месте. Дети просыпаются каждое 
+				утро и обыскивают дом, чтобы увидеть, где снова появился эльф. Каждую ночь 
+				эльф улетает на Северный полюс, чтобы рассказать Санта-Клаусу, были ли дети 
+				послушными или нет. <br/>
+				Это милый способ сохранить дух Санты. Золотое правило, которому нужно следовать: 
+				дети не могут трогать эльфа. В ночь перед Рождеством эльф улетает в последний 
+				раз до следующего года.
+				</span>
+			</p>
+			
+			<button class='button' style='background-color:red' onclick='myFunction(2)' id='button3'>
+				Read more
+			</button>
+				
+		</div>
+		
+		
+		<div class='column-image'>
+		
+			<img src='images/helper.png' width=100% height=auto />
+			
+		</div>
+	
+	</div>
+
+</div>
+
+
+<form name='contact' action="mailto:ampilov2000@mail.ru" method="post" enctype="text/plain">
+	<div class='form-container'>
+		<div class='form-row'>
+			<div class='form-column-image'>
+				<img src='images/sman2.png' width=100% height=100% />
+			</div>
+			
+			<div class='form-column-text'>
+				<p style='font-size:12px; font-family:cursive; font-weight:bold'>
+					Fill in all the fields, send your letter to Santa,
+					and he will answer right away!
+				</p>
+			</div>
+		</div>
+		
+		<hr color='red'>
+
+		<p> Dear Santa, </p>
+		<p style='text-align:center;'>
+			My name is: <input class='input-border' type='text' name='Name'>
+		</p>
+		<p style='text-align:center;'>
+			I am a: <input type='radio' name='sex' style='margin-left:10px;' value='Boy'>
+			<span style='color:Khaki;'> BOY </span>
+			<input type='radio' name='sex' style='margin-left:20px;' value='Girl'>
+			<span style='color:Khaki;'> GIRL </span>
+		</p>
+		
+		<p style='text-align:left; margin-left:35%; color:Khaki;'>
+				<input type='radio' name='behavior' value='good'> GOOD <br/>
+				<span style='position:absolute; margin-left:-30%; color:#fff;'> This year I have been: </span>
+				<input type='radio' name='behavior' value='very good'> VERY, VERY GOOD <br/>
+				<input type='radio' name='behavior' value='not so good'> A TEENY TINY BIT NOT SO GOOD
+		</p>
+
+		<p> This year for Christmas i'd like to get: </p>
+		<p style='text-align:right; margin-right:30%;'>
+			a <input class='input-border' type='text' name='Present1'><br/><br/>
+			a <input class='input-border' type='text' name='Present2'><br/><br/>
+			and also some <input class='input-border' type='text' name='Present3'>
+		</p>
+		
+		<br/>
+		<p style='text-align:center;'> and Santa, I also want to tell you: <br/><br/>
+			<textarea class='input-border' name='Letter' style='width:50%; height:10%;'></textarea>
+		</p>
+		
+		<p style='text-align:center;'>
+			<input class='button-style' type='submit' value='Send it!'>
+		</p>
+		
+		<br/>
+		<br/>
+	</div>
+</form>
+
+
+<footer></footer>
+
+
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+

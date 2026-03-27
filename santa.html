@@ -1,0 +1,385 @@
+<!DOCKTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+
+body {
+	margin: 0;
+	background: linear-gradient(90deg, MidNightBlue 0%, LightSkyBlue 25%, white 50%, 
+									   LightSkyBlue 75%, MidNightBlue 100%);
+}
+
+
+.navbar {
+	owerflow: hidden;
+	position: fixed;
+	top: 0;
+	width: 100%;
+	height: 50px;
+	background: rgba(0, 0, 0, 0.0);	/* Black bg with 1.0 opacity */
+	z-index: 15;
+}
+
+.navbar a {
+	float: left;
+	display: block;
+	color: #f2f2f2;
+	text-align: center;
+	padding: 14px 16px;
+	text-decoration: none;
+	font-size: 27px;
+}
+
+.navbar a:hover {
+	background: #ddd;
+	color: black;
+}
+
+
+.main {
+	padding: 15px;
+	margin-left: 15%;
+	margin-top: 25%;
+}
+
+
+article, aside {
+	display: inline-block;
+	vertical-align:top;
+	text-align: justify;
+}
+
+article {
+	background-color: rgba(255, 255, 255, 0.7);
+	box-shadow: 0, 0, 10px rgba(25, 25, 112, 0.5) /* Shadow parameters */
+	padding: 10px;
+	border-radius: 5px;
+	width: 80%;
+	margin-right: 5%;
+	z-index: -2;
+}
+
+aside {
+	position: relative;
+	padding-left: 1.5rem;
+	margin-left: 1.5rem;
+	padding-right: 1.5rem;
+	margin-right: 1.5rem;
+	margin-top: 1.5rem;
+	float: right;
+	font-style: Italic;
+	color: #29627e;
+	width: 25%;
+	background-color: #87CEEB;
+	
+	box-shadow: 0px 2px 5px #1c1a19;
+	border-radius: 5px;
+	
+	color: white;
+	font-size: 0.9em;
+	z-index: 1;
+}
+
+aside > p {
+	margin: 1.5rem;
+}
+
+
+.main-text {
+	font-family: 'Fira Sans', sans-serif;
+	text-align: justify;
+	line-height: 1.9em;
+	color: MidNightBlue;
+	margin-right: 5%;
+	margin-left: 5%
+}
+
+
+#santa_picture {
+	text-align: center;
+}
+
+
+.footer {
+	position: absolute;
+	right: 0;
+	bottom: 0;
+	left: 0;
+	padding: 1rem;
+	background-color: #efefef;
+	text-align: center;
+	width: 100%;
+}
+
+
+.imgW {
+	width: 100%;
+	height: 250px;
+	position: absolute;
+	top: 0;
+	position: fixed;
+	z-index: 10;
+}
+
+
+.imgW > img {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+}
+
+
+aside img {
+	margin: 15px 15px;
+}	
+
+
+form {
+	display: none;
+	position: absolute;
+	top: 50%;
+	left: 30%;
+	width: 40%;
+	height: 130%;
+	color: white;
+	font-family: 'Monotype Corsiva', cursive;
+	font-size: 20px;
+	background-color: rgba(210, 0, 0, 1.0);
+	z-index: 7;
+}
+
+
+.container {
+	padding-left: 10px;
+	padding-right: 10px;
+}
+
+
+.row:after {
+	content: "";
+	display: table;
+	clear: both;
+}
+
+
+.column-text {
+	float: left;
+	width: 78%;
+	height: 7%;
+	padding: 10px;
+}
+
+
+.column-image {
+	float: left;
+	width: 12%;
+	height: 7%;
+	padding: 10px;
+}
+
+
+.input-border {
+	margin-left: 10px;
+	border-width: 7px;
+	-webkit-border-image: repeating-linear-gradient(-45deg, Khaki, Khaki 10px,
+											darkred 10px, red 15px,
+											darkred 20px) 7.5;
+											
+	-moz-border-image: repeating-linear-gradient(-45deg, Khaki, Khaki 10px,
+											darkred 10px, red 15px,
+											darkred 20px) 7.5;
+											
+	-o-border-image: repeating-linear-gradient(-45deg, Khaki, Khaki 10px,
+											darkred 10px, red 15px,
+											darkred 20px) 7.5;
+											
+	border-image: repeating-linear-gradient(-45deg, Khaki, Khaki 10px,
+											darkred 10px, red 15px,
+											darkred 20px) 7.5;
+}
+
+
+.button-style {
+	font-family: 'Monotype Corsiva', cursive;
+	font-size: 20px;
+	color: #FA8072;
+	border-width: 7px;
+	-webkit-border-image: repeating-linear-gradient(-45deg, Khaki, Khaki 10px,
+											darkred 10px, red 15px,
+											darkred 20px) 7.5;
+											
+	-moz-border-image: repeating-linear-gradient(-45deg, Khaki, Khaki 10px,
+											darkred 10px, red 15px,
+											darkred 20px) 7.5;
+											
+	-o-border-image: repeating-linear-gradient(-45deg, Khaki, Khaki 10px,
+											darkred 10px, red 15px,
+											darkred 20px) 7.5;
+											
+	border-image: repeating-linear-gradient(-45deg, Khaki, Khaki 10px,
+											darkred 10px, red 15px,
+											darkred 20px) 7.5;
+}
+
+
+</style>
+
+<script>
+
+function formVisible() {
+	if (contact.style.display === 'block') {
+		contact.style.display = 'none';
+	} else {
+		contact.style.display = 'block';
+		window.scrollTo(0, 0);
+	}
+}
+
+</script>
+
+</head>
+
+<body>
+
+<header>
+
+<div class="navbar">
+	<a href="main.html"> Home </a>
+	<a href="santa.html"> History </a>
+	<a href="santa_friends.html"> Friends </a>
+	<a href="snowman.html"> Snowman </a>
+	<a href="#contact" onclick="formVisible()"> Contact </a>
+</div>
+
+<div class="imgW">
+	<img src="images/banner.png" />
+</div>
+
+</header>
+
+<div class="main">
+	<section>
+		<article>
+			<aside>
+				<h1> About Santa </h1>
+				<img src="images/Santa.gif" alt="SantaPicture" width=80% height=auto />
+				<p class='main-text'>
+					I am Santa Claus <br>
+					Flying through the snow <br>
+					Can you hear him ho ho ho <br>
+					He's so full of cheers <br>
+					Only has to work <br>
+					One day a year
+				</p>
+			</aside>
+		
+			<p class='main-text'>
+				Культ Святого Николая был очень распространен в Голландии. Еще с семнадцатого века голландцы
+				праздновали шестого декабря день Святого Николая (в православной церкви - 19 декабря)
+				известного покровителя моряков и детей.
+				<br><br>
+				Так как Святой Николай - покровитель детей, вечером детям раздавали подарки: деревянный
+				башмак наполняли фруктами и сладостями (сейчас башмак заменен подвешенным над камином носочком).
+				<br><br>
+				Во времена Реформации церкви культ Святого Николая ослабевает и почти исчезает из Европы.
+				Только в Голландии все еще празднуют день Святого Николая или Sinterklaas,
+				как его там называют. Этот обычай с традиционными подарками для детей,
+				голландские поселенцы привозят в Нью-Амстердам - так когда-то назывался Нью-Йорк.
+				В Америке голландский Sinterklaas становится Санта Клаусом (Santa Claus). Под этим именем
+				ставший американцем святой и известен теперь всему миру.
+				<br><br>
+				В 1823 году преподаватель семинарии Клемент Кларк Мур придумал образ Санта Клауса.
+				Под рождество Кларк прочёл жене и детям сочиненное им стихотворение "Рождество на пороге,
+				или Визит Санта-Клауса". Он изобразил Санта-Клауса добрым эльфом, который приезжает на восьми
+				оленях и проникает в дом через дымоход. Мур не собирался публиковать свое сочинение,
+				однако один из друзей без ведома автора отнес опус Мура в газету "Sentinel".
+				<br><br>
+				Первый образ Санта-Клауса нарисовал в 1862 году карикатурист Томас Наст.
+				В течение 24 лет он рисовал его для обложки популярного журнала "Harper's Weekly".
+				Художник поселил Клауса на Северном полюсе (а не в Лапландию).
+				Обложки пользовались невероятной популярностью.
+				<br><br>
+				Во время Гражданской войны Линкольн попросил Наста нарисовать Санту вместе с северянами.
+				Историки утверждают, что армию конфедератов деморализовало появление Клауса на стороне противника.
+				<br><br>
+				У Санты Томаса Наста оказался один недостаток - он был черно-белым. Красную шубу
+				сказочному дедушке подарил в 1885 г. издатель Луис Пранг. Он перенес в Америку викторианскую
+				традицию рождественских поздравительных открыток, выполненных в технике цветной литографии.
+				Так Санта-Клаус сменил меха, в которые его нарядил Наст, на добротный ярко-красный наряд.
+				<br><br>
+				Наконец, в 1930 г. компания «Кока-Кола» придумала хитрый рекламный трюк,
+				чтобы об их продукции не забывали ни летом, ни зимой – художник из Чикаго Хэддон Сандблом
+				изобразил Санта-Клауса в красно-белых цветах Кока-Колы.
+			</p>
+		</article>
+	</section>
+</div>
+
+
+<form name='contact' action="mailto:ampilov2000@mail.ru" method="post" enctype="text/plain">
+	<div class='container'>
+		<div class='row'>
+			<div class='column-image'>
+				<img src='images/sman2.png' width=100% height=100% />
+			</div>
+			
+			<div class='column-text'>
+				<p style='font-size:12px; font-family:cursive; font-weight:bold'>
+					Fill in all the fields, send your letter to Santa,
+					and he will answer right away!
+				</p>
+			</div>
+		</div>
+		
+		<hr color='red'>
+
+		<p> Dear Santa, </p>
+		<p style='text-align:center;'>
+			My name is: <input class='input-border' type='text' name='Name'>
+		</p>
+		<p style='text-align:center;'>
+			I am a: <input type='radio' name='sex' style='margin-left:10px;' value='Boy'>
+			<span style='color:Khaki;'> BOY </span>
+			<input type='radio' name='sex' style='margin-left:20px;' value='Girl'>
+			<span style='color:Khaki;'> GIRL </span>
+		</p>
+		
+		<p style='text-align:left; margin-left:35%; color:Khaki;'>
+				<input type='radio' name='behavior' value='good'> GOOD <br/>
+				<span style='position:absolute; margin-left:-30%; color:#fff;'> This year I have been: </span>
+				<input type='radio' name='behavior' value='very good'> VERY, VERY GOOD <br/>
+				<input type='radio' name='behavior' value='not so good'> A TEENY TINY BIT NOT SO GOOD
+		</p>
+
+		<p> This year for Christmas i'd like to get: </p>
+		<p style='text-align:right; margin-right:30%;'>
+			a <input class='input-border' type='text' name='Present1'><br/><br/>
+			a <input class='input-border' type='text' name='Present2'><br/><br/>
+			and also some <input class='input-border' type='text' name='Present3'>
+		</p>
+		
+		<br/>
+		<p style='text-align:center;'> and Santa, I also want to tell you: <br/><br/>
+			<textarea class='input-border' name='Letter' style='width:50%; height:10%;'></textarea>
+		</p>
+		
+		<p style='text-align:center;'>
+			<input class='button-style' type='submit' value='Send it!'>
+		</p>
+		
+		<br/>
+		<br/>
+	</div>
+</form>
+
+
+<footer>
+	<img src="images/footer2.png" alt="" width=100% />
+</footer>
+
+
+</body>
+</html>
